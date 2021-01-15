@@ -22,7 +22,7 @@ export class ObjectModule {
    * pick, omitで利用する共通関数
    * collBackのオブジェクトを新しい一つのオブジェクトとして戻す。
    */
-  private static basePick<T, K extends keyof T, R>(obj: T, collBack: (k: K, v: T[K]) => {[x: string]: T[K]}): R {
+  private static basePick<T, K extends keyof T, R>(obj: T, collBack: (k: K, v: T[K]) => {[x: string]: T[K]}|void): R {
     return Object.assign({}, ...Object.entries(obj).map(([k, v]) => collBack(k as K, v)).filter(v => v));
-  }
+  };
 }
