@@ -1,0 +1,7 @@
+[
+  "export class $MODULE_NAME {",
+  "\tpublic static example() {",
+  "",
+  "\t};",
+  "}"
+]
