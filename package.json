@@ -15,9 +15,8 @@
   "scripts": {
     "start": "ts-node",
     "test": "jest",
-    "g:module": "npm run generate",
-    "generate:module": "ts-node ./.tools/generateModule/",
-    "update:index.ts": "npm run generate -- --update"
+    "g:module": "npm run generate:module",
+    "generate-module": "ts-node ./.tools/generate-module/"
   },
   "keywords": [],
   "author": "",
