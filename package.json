@@ -6,6 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.20",
+    "commander": "^7.0.0",
     "jest": "^26.6.3",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
@@ -13,7 +14,8 @@
   },
   "scripts": {
     "start": "ts-node",
-    "test": "jest"
+    "test": "jest",
+    "create-module": "node ./.tools/createModule.js"
   },
   "keywords": [],
   "author": "",
