@@ -1,10 +1,10 @@
-import { ObjectModule } from "@/modules/ObjectModule";
+import { ObjectModule } from './ObjectModule';
 
 const user = {
   lastName: 'hanetsuki',
   firstName: 'touka',
   berthDay: '1995-04-10'
-}
+};
 
 describe('Test the ObjectModule.', () => {
   test('Test the pick method response to select the firstName and lastName from user.', () => {
