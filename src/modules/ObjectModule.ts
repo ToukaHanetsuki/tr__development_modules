@@ -28,13 +28,13 @@ export class ObjectModule {
    * @template T
    * @template K
    * @param {T} obj
-   * @param {...K[]} key
+   * @param {...K[]} keys
    * @return {*}  {Pick<T, K>}
    * @memberof ObjectModule
    */
-  public static pick<T, K extends keyof T>(obj: T, ...key: K[]): Pick<T, K> {
+  public static pick<T, K extends keyof T>(obj: T, ...keys: K[]): Pick<T, K> {
     return this.basePick(obj, (k, v) => {
-      if (key.includes(k as K)) return { [k]: v };
+      if (keys.includes(k as K)) return { [k]: v };
     });
   };
 
@@ -45,13 +45,13 @@ export class ObjectModule {
    * @template T
    * @template K
    * @param {T} obj
-   * @param {...K[]} key
+   * @param {...K[]} keys
    * @return {*}  {Omit<T, K>}
    * @memberof ObjectModule
    */
-  public static omit<T, K extends keyof T>(obj: T, ...key: K[]): Omit<T, K> {
+  public static omit<T, K extends keyof T>(obj: T, ...keys: K[]): Omit<T, K> {
     return this.basePick(obj, (k, v) => {
-      if (!key.includes(k as K)) return { [k]: v };
+      if (!keys.includes(k as K)) return { [k]: v };
     });
   };
 
