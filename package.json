@@ -14,7 +14,7 @@
   "scripts": {
     "start": "ts-node",
     "test": "jest",
-    "g:module": "npm run generate:module",
+    "g:module": "yarn generate-module",
     "generate-module": "ts-node ./.tools/generate-module/"
   },
   "keywords": [],
