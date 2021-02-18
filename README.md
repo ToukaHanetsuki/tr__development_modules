@@ -1,7 +1,7 @@
-# 汎用モジュール備忘録
+# development_modules
 個人的に作成した汎用メソッドをメモしておくためのリポジトリです
 
-##　Set up
+## Set up
 ```
 yarn install
 ```
