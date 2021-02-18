@@ -29,7 +29,7 @@ function pascalCase(str: string): string {
  * @param {string} msg
  */
 function saySuccessMessage(msg: string): void {
-  console.log('\u001b[32m✨ ' + msg + '\u001b[0m')
+  console.log('\u001b[32m✨  ' + msg + '\u001b[0m')
 }
 
 /**
