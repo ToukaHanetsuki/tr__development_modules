@@ -72,4 +72,50 @@ export class ObjectModule {
   private static basePick<T, K extends keyof T, R>(obj: T, collBack: (k: K, v: T[K]) => {[x: string]: T[K]}|void): R {
     return Object.assign({}, ...Object.entries(obj).map(([k, v]) => collBack(k as K, v)).filter(v => v));
   };
+
+  /**
+   * ネストの深いオブジェクトをマージする
+   * ※ 関数はマージできないので注意
+   *
+   * @static
+   * @template T
+   * @template K
+   * @param {T} target
+   * @param {T} source
+   * @return {*}  {T}
+   * @memberof ObjectModule
+   */
+  public static mergeDeeply<T extends Record<string, unknown>, K extends keyof T>(target: T, source: T): T {
+    let result = Object.assign({}, target) as T;
+
+    if (this.isObject(target) && this.isObject(source)) {
+      Object.entries(source).forEach(([sourceKey, sourceValue]) => {
+        const targetValue = target[sourceKey];
+        if (Array.isArray(sourceValue) && Array.isArray(targetValue)) {
+          result[sourceKey as K] = targetValue.concat(...sourceValue) as T[K];
+        }
+        else if (this.isObject(sourceValue) && target.hasOwnProperty(sourceKey)) {
+          result[sourceKey as K] = this.mergeDeeply(targetValue as Record<string, unknown>, sourceValue as Record<string, unknown>) as T[K];
+        }
+        else {
+          Object.assign(result, {[sourceKey]: sourceValue});
+        }
+      })
+    }
+
+    return result;
+  }
+
+  /**
+   * Objectかどうか判定する
+   *
+   * @private
+   * @static
+   * @param {*} obj
+   * @return {*}  {boolean}
+   * @memberof ObjectModule
+   */
+  private static isObject(obj: any): boolean {
+    return obj && typeof obj === 'object' && !Array.isArray(obj);
+  }
 }
